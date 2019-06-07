@@ -1,0 +1,44 @@
+  <ion-header no-shadow no-border>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content padding>
+  <div class="intro">
+    <img class="logo" src="../../../assets/Logo-black.png" alt="drivix logo"/>
+    <h1 class="login-subtitle">Drivix fo <span style="color: #ffce00;">Drivers</span></h1>
+  </div>
+  
+<!-- start -->
+<div [formGroup]="login_form" class="login-form">
+    <ion-item>
+			<ion-label>Email Address </ion-label>
+			<ion-input [(ngModel)]="data.email" type="text" formControlName="email"></ion-input>
+    </ion-item>
+    <span class="error-message" *ngIf="login_form.controls['email'].hasError('required')  && (login_form.controls['email'].dirty || login_form.controls['email'].touched)">This field is required</span>
+		<span class="error-message" *ngIf="login_form.controls['email'].hasError('pattern') && (login_form.controls['email'].dirty || login_form.controls['email'].touched)">Please enter valid email address</span>
+		<ion-item>
+			<ion-label>Password </ion-label>
+			<ion-input [(ngModel)]="data.password" type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <span class="error-message" *ngIf="login_form.controls['password'].hasError('required') && (login_form.controls['password'].dirty || login_form.controls['password'].touched)">This field is required</span>
+</div>
+
+<div class="errors">
+    <p class="error-message general-error" color="primary" *ngIf="errors">{{error_msg}}</p>
+</div>
+
+<div class="forget-link" style="display: block !important;">
+    <a style="display: block !important;" class="forget-link" (click)="presentAlert()">LOST YOUR PASSWORD ?</a>
+</div>
+
+<ion-button class="login-btn" expand="block" color="dark"
+ (click)="submitForm()">Login<ion-icon name="return-right"></ion-icon>
+</ion-button>
+
+<!-- end -->
+
+</ion-content>

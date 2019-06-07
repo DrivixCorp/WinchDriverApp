@@ -1,0 +1,62 @@
+ion-header{
+    box-shadow: none;
+}
+.intro{
+    margin: auto;
+    text-align: center;
+}
+.logo{
+    width: 100px;
+}
+.login-subtitle{
+    font-family: 'Raleway', sans-serif;
+}
+.forget-link, .regiter-link{
+    margin: 15px;
+    margin-left: 0px;
+    font-size: 10px;
+    color: #000;
+    font-family: 'Titillium Web', sans-serif;
+}
+.login-form ion-label, ion-input{
+    font-family: 'Titillium Web', sans-serif;
+    color: #3a3c4d;
+    font-size: 14px;
+}
+.login-form ion-input{
+    color: black;
+}
+.login-btn{
+    font-family: 'Titillium Web', sans-serif;
+    --border-radius: 0px;
+    --box-shadow:none;
+    color:red;
+}
+.login-btn ion-icon{
+    margin-left: 5px;
+}
+.register-link{
+    margin: auto;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 14px;
+    font-family: 'Titillium Web', sans-serif;
+}
+.error-message{
+    font-size: 13px;
+    color: var(--ion-color-danger-shade);
+    font-family: 'Titillium Web', sans-serif;
+    text-align: right;
+    margin:0px;
+    float: right;
+}
+.errors{
+    height: 30px;
+    margin:0px;
+}
+.general-error{
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    float: left;
+}

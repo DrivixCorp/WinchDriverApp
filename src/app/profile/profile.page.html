@@ -1,0 +1,84 @@
+<ion-header no-shadow no-border>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="light">PROFILE</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+    <ion-item class="intro">
+
+      <ion-item [hidden]="!checkHasImage()" (click)='EditPhoto_options()' class="fas fa-user-circle user"></ion-item>
+
+      <ion-item [hidden]="checkHasImage()" (click)='EditPhoto_options()'>
+        <img class="imageProfile" *ngIf="data.image" src="{{ data.image }}">
+      </ion-item>
+
+      <ion-item class="username">{{ data.name }}</ion-item>
+    </ion-item>
+    
+    <div [formGroup]="profile_form" class="">
+      <ion-item>
+        <ion-label>Job</ion-label>
+        <ion-input [ngModelOptions]="{standalone: true}" [(ngModel)]="data.job" formControlName="job"></ion-input>
+      </ion-item>
+
+      <span class="error-message" *ngIf="profile_form.controls['job'].hasError('required') && (profile_form.controls['job'].dirty || profile_form.controls['job'].touched)">Please enter your job</span>
+      <span class="error-message" *ngIf="profile_form.controls['job'].hasError('minLength') && (profile_form.controls['job'].dirty || profile_form.controls['job'].touched)">Enter at least 5 characters</span>
+      <span class="error-message" *ngIf="profile_form.controls['job'].hasError('maxLength') && (profile_form.controls['job'].dirty || profile_form.controls['job'].touched)">At most 50 are allowed</span>
+      
+      <ion-item>
+        <ion-label>Phone number</ion-label>
+        <ion-input [(ngModel)]="data.phone" [ngModelOptions]="{standalone: true}" formControlName="phone"></ion-input>
+      </ion-item>
+
+      <span class="error-message" *ngIf="profile_form.controls['phone'].hasError('required') && (profile_form.controls['phone'].dirty || profile_form.controls['phone'].touched)">Please enter your phone number</span>
+      <span class="error-message" *ngIf="profile_form.controls['phone'].hasError('minLength') && (profile_form.controls['phone'].dirty || profile_form.controls['phone'].touched)">Please enter valid phone number</span>
+      <span class="error-message" *ngIf="profile_form.controls['phone'].hasError('maxLength') && (profile_form.controls['phone'].dirty || profile_form.controls['phone'].touched)">Please enter valid phone number</span>
+
+      <ion-item>
+        <ion-label>Address</ion-label>
+        <ion-input [(ngModel)]="data.location" [ngModelOptions]="{standalone: true}" formControlName="location"></ion-input>
+      </ion-item>
+
+      <span class="error-message" *ngIf="profile_form.controls['location'].hasError('required') && (profile_form.controls['location'].dirty || profile_form.controls['location'].touched)">Please enter your address</span>
+      <span class="error-message" *ngIf="profile_form.controls['location'].hasError('minLength') && (profile_form.controls['location'].dirty || profile_form.controls['location'].touched)">Enter at least 5 characters</span>
+      <span class="error-message" *ngIf="profile_form.controls['location'].hasError('maxLength') && (profile_form.controls['location'].dirty || profile_form.controls['location'].touched)">At most 25 are allowed</span>
+
+      <ion-list>
+          <ion-radio-group [ngModelOptions]="{standalone: true}" [(ngModel)]="data.gender" formControlName="gender">
+            <ion-list-header>
+              <ion-label>Gender</ion-label>
+            </ion-list-header>
+            <ion-item>
+              <ion-label>Male</ion-label>
+              <ion-radio slot="start" value="male"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Female</ion-label>
+              <ion-radio slot="start" value="female" checked></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+
+        <span class="error-message" *ngIf="profile_form.controls['gender'].hasError('required') && (profile_form.controls['gender'].dirty || profile_form.controls['gender'].touched)">Please select your gender</span>
+
+      <ion-item>
+        <ion-label>Birth date</ion-label>
+        <ion-input [ngModelOptions]="{standalone: true}" [(ngModel)]="data.DOB" type="date" formControlName="DOB" value ="{{ data.DOB | date: 'yyyy-MM-dd'}}"></ion-input>
+      </ion-item>
+
+      <span class="error-message" *ngIf="profile_form.controls['DOB'].hasError('required') && (profile_form.controls['DOB'].dirty || profile_form.controls['DOB'].touched)">Please select your birth date</span>
+
+      <ion-button [ngClass]="{'hide':HasProfile == true , 'active':HasProfile == false}"  id="AddProfile" class="save-btn" expand="block" color="dark" (click)="UpdateMyData('profile')">
+        Save<ion-icon name="checkmark"></ion-icon>
+      </ion-button>
+
+    <ion-button  [ngClass]="{'hide':HasProfile == false , 'active':HasProfile == true}" id="UpdateProfile" class="save-btn" expand="block" color="dark" (click)="UpdateMyData('updateprofile')">
+        Update Profile<ion-icon name="checkmark"></ion-icon>
+    </ion-button>
+  </div>
+
+  <!--End Profile Form-->
+</ion-content>

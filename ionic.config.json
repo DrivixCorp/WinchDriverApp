@@ -1,5 +1,7 @@
 {
   "name": "winchDriverDrivix",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -1,0 +1,64 @@
+ion-title{
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 1.5px;
+}
+.intro{
+    margin: auto;
+    text-align: center;
+}
+.user{
+    font-size: 80px;
+    color: var(--ion-color-primary-tint);
+}
+.username{
+    font-size: 13px;
+    letter-spacing: 1.8px;
+    font-family: 'Raleway', sans-serif;
+}
+.profile-form ion-label, ion-input{
+    font-family: 'Titillium Web', sans-serif;
+    color: #3a3c4d;
+    font-size: 14px;
+}
+.profile-form ion-input{
+    color: black;
+}
+.profile-form .save-btn, .cancel-btn{
+    font-family: 'Titillium Web', sans-serif;
+    --border-radius: 0px;
+    --box-shadow:none;
+    margin-top: 20px;
+}
+.save-btn ion-icon, .cancel-btn ion-icon{
+    margin-left: 5px;
+}
+.cancel-btn{
+    margin-bottom: 25px;
+}
+.hide
+{
+    display: none;
+}
+.active
+{
+    display: block;
+}
+.error-message{
+    font-size: 13px;
+    color: var(--ion-color-danger-shade);
+    font-family: 'Titillium Web', sans-serif;
+    text-align: right;
+    margin:0px;
+    float: right;
+}
+
+.imageProfile {
+    max-width: 100%;
+    border: 0;
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px double #eeab10;
+    margin-bottom: 20px;
+}

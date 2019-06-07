@@ -1,27 +1,60 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header no-shadow no-border>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
-      List
-    </ion-title>
+    <ion-title color="light">My Orders</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
-    </ion-item>
-  </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
+<ion-content padding>
+
+  <ion-grid color="primary">
+    <ion-row>
+
+      <ion-col size="12">
+        <h4 class="faq-title"><i class="fas fa-shopping-cart"></i> latest Orders</h4>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-card style="margin-bottom: 20px;" *ngFor="let order of MyOrders">
+          <ion-card-header color="dark">
+            <ion-card-title style="font-size: 16px;">{{ 'winch Order' }} <span style="float: right;font-size: 11px;padding-top: 5px;"> {{order.created_at}}</span></ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ul style="padding: 10px 0;margin: auto;">
+              <li style="display: inline-block; width: 50%;font-weight: bolder !important;">Order Status : </li>
+              <li style="display: inline-block; width: 45%;">{{ getOrderStatus(order)}}</li>
+              <li style="display: inline-block; width: 50%;font-weight: bolder !important;">Created at : </li>
+              <li style="display: inline-block; width: 45%;">{{ order.created_at| date }}</li>
+              <li style="display: inline-block; width: 50%;font-weight: bolder !important;">ClientName : </li>
+              <li style="display: inline-block; width: 45%;">{{ order.userName }}</li>
+            </ul>
+            <ion-note style="font-size: 14px;" slot="end" color="primary">
+              RATE :
+              <i class="fas fa-star" *ngIf="order.feedback &&  order.feedback.rate>=1" ></i>
+              <i class="fas fa-star" *ngIf="order.feedback && order.feedback.rate>=2" ></i>
+              <i class="fas fa-star" *ngIf="order.feedback && order.feedback.rate>=3" ></i>
+              <i class="fas fa-star" *ngIf="order.feedback && order.feedback.rate>=4" ></i>
+              <i class="fas fa-star" *ngIf="order.feedback && order.feedback.rate>=5" ></i>
+
+              <i *ngIf="order.feedback && order.feedback.rate<1" class="far fa-star"></i>
+              <i *ngIf="order.feedback && order.feedback.rate<2" class="far fa-star"></i>
+              <i *ngIf="order.feedback && order.feedback.rate<3" class="far fa-star"></i>
+              <i *ngIf="order.feedback && order.feedback.rate<4" class="far fa-star"></i>
+              <i *ngIf="order.feedback && order.feedback.rate<5" class="far fa-star"></i>
+
+              <ng-container *ngIf="order.feedback == null">
+                No Feedback
+              </ng-container>
+            </ion-note>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
+

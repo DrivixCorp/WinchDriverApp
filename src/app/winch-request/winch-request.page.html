@@ -1,0 +1,31 @@
+<ion-header no-shadow no-border>
+  <ion-toolbar color="dark">
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+
+    <ion-buttons slot="start">
+      <ion-menu-button style="display: block !important;"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="light">SERVICES</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div #map id="map" [style.width]="'100%'" [style.height]="height"></div>
+
+  <!-- StartIcon -->
+  <ion-fab  vertical="bottom" horizontal="start" slot="fixed" style="margin-bottom: 75px;">
+    <ion-fab-button style="width: 80px;" color="success" [disabled]="checkStartTrip()" (click)="startTripOrder()">
+      <ion-icon name="arrow-dropleft"></ion-icon> Start
+    </ion-fab-button>
+  </ion-fab>
+  <!-- Finish Icon -->
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button  [disabled]="checkEndTrip()" style="width: 80px;" color="danger" (click)="FinishTripOrder()">
+      <ion-icon name="arrow-dropleft"></ion-icon> Finish
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
